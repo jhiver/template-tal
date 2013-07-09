@@ -66,7 +66,7 @@ Typically, you may have a data structure looking like this:
 
 And you want your end result to look like this:
 
-   <body>
+    <body>
       <h1>Bob</h1>
       <p>Basket List:</p>
       <ul>
@@ -79,7 +79,7 @@ And you want your end result to look like this:
 
 So let's work this out. First let's replace the username "Bob":
 
-  <h1 tal:content="self.user">Bob</h1>
+    <h1 tal:content="self.user">Bob</h1>
 
 Now lets work out the list:
 
@@ -90,28 +90,28 @@ Now lets work out the list:
 
 Our template now looks like:
 
-   <body>
+    <body>
       <h1 tal:content="self.user">Bob</h1>
       <p>Basket List:</p>
       <ul>
         <li tal:repeat="item self.basket"
             tal:content="self.item">some fruit goes here</li>
       </ul>
-   </body>
+    </body>
 
 Ah! But what is happening if our basket is empty? Then we'd get the following
 output:
 
-   <body>
+    <body>
       <h1>Bob</h1>
       <p>Basket List:</p>
       <ul>
       </ul>
-   </body>
+    </body>
 
 Which is not very elegant. Thus we change the template as follows:
 
-   <body>
+    <body>
       <h1 tal:content="self.user">Bob</h1>
       <div tal:condition="true:self.basket">
         <p>Basket List:</p>
@@ -123,11 +123,12 @@ Which is not very elegant. Thus we change the template as follows:
       <div tal:condition="false:self.basket">
         <p><span tal:replace="self.user">SomeUser</span>'s basket is empty :-(.</p>
       </div>
-   </body>
+    </body>
 
 Let's explain what we did here:
 
-* We used tal:content to replace the content of a tag with a javascript
+<ul>
+  <li>We used tal:content to replace the content of a tag with a javascript
   expression. This implementation of the TAL spec evals Javascript directly, so
   you can do things like:
 
@@ -143,14 +144,16 @@ Let's explain what we did here:
 
   Then 'someDataStructure' is available as self. Thus
   someDataStructure.someObject.someMethod(23) becomes available as
-  self.someObject.someMethod(23) in your template.
+  self.someObject.someMethod(23) in your template.</li>
 
-* We then used tal:condition in conjunction with the "true:" modifier to
-  either display a list if the list is populated, or display a message
-  describing an empty basket.
+  <li>We then used tal:condition in conjunction with the "true:" modifier to
+either display a list if the list is populated, or display a message describing
+an empty basket.</li>
 
 
-* Finally, we used tal:repeat to iterate through each item of the basket.
+  <li>Finally, we used tal:repeat to iterate through each item of the basket.</li>
+
+</ul>
 
 You can find a TAL reference at
 http://www.owlfish.com/software/simpleTAL/tal-guide.html, and this library
@@ -160,91 +163,102 @@ tried to implement most of it.
 RESTRICTIONS:
 -------------
 
-* No namespace support, just use 'tal:' everywhere.
+<ul>
+  <li>No namespace support, just use 'tal:' everywhere.</li>
 
-* Doesn't implement TALES to evaluate expressions.
-  
-  Instead, the Javascript which you supply is evaled directly, which should allow some
-  cool stuff if you use this library in conjunction with jquery for instance.
+  <li>Doesn't implement TALES to evaluate expressions Instead, the Javascript
+which you supply is evaled directly, which should allow some cool stuff if you
+use this library in conjunction with jquery for instance.</li>
 
-* Doesn't implement METAL spec (Macros).
-
+  <li>Doesn't implement METAL spec (Macros).</li>
+</ul>
 
 SUPPORTED TAL STATEMENTS:
 -------------------------
 
-* tal:on-error - because it's nicer than a 500
+<ul>
 
-  <p tal:on-error="string:some thing bad happened">
-     ... do some potentially fatal stuff here ...
-  </p>
+<li> tal:on-error
 
-* tal:define - because typing is tiring
+    <p tal:on-error="string:some thing bad happened">
+       ... do some potentially fatal stuff here ...
+    </p>
+</li>
 
-  <p tal:define="newSymbol self.some.very.long.and.cumbersome.expression">
-    <span petal:replace="self.newSymbol" />
-  </p>
+<li> tal:define
 
-* tal:condition - because you're so special
+    <p tal:define="newSymbol self.some.very.long.and.cumbersome.expression">
+      <span petal:replace="self.newSymbol" />
+    </p>
+</li>
 
-  <p tal:condition="true:self.stuff">
-    self.stuff is true, let's do something.
-  </p>
-  <p tal:condition="false:self.stuff">
-    self.stuff is false, let's do something else.
-  </p>
+<li> tal:condition
+
+    <p tal:condition="true:self.stuff">
+      self.stuff is true, let's do something.
+    </p>
+    <p tal:condition="false:self.stuff">
+      self.stuff is false, let's do something else.
+    </p>
+</li>
   
-* tal:repeat - because we need fruit loops.
+<li> tal:repeat
 
-  <table>
-    <th>
-      <td>username</td>
-      <td>email</td>
-    </th>
-    <tr tal:repeat="user self.users()">
-      <td tal:content="self.user.login()">login</td>
-      <td tal:content="self.user.email()">email</td>
-    </tr>
-  </table>
-  
-  Note that tal:repeat also auto creates the following variables, which you can
- access from within your repeat block.
+    <table>
+      <th>
+        <td>username</td>
+        <td>email</td>
+      </th>
+      <tr tal:repeat="user self.users()">
+        <td tal:content="self.user.login()">login</td>
+        <td tal:content="self.user.email()">email</td>
+      </tr>
+    </table>
 
-  - self.repeat.index - 1, 2, 3, etc.
-  - self.repeat.number - same as 'index'
-  - self.repeat.even - true if index is even
-  - self.repeat.odd - true is index is odd
-  - self.repeat.start - true if index == 1
-  - self.repeat.end - true if index is pointing to last item of your list
-  - self.repeat.inner - true if niether start nor end are true
+Note that tal:repeat also auto creates the following variables, which you can
+access from within your repeat block.
 
-* tal:content - replaces inner tag content with something else.
+  <ul>
+   <li>self.repeat.index - 1, 2, 3, etc.</li>
+   <li>self.repeat.number - same as 'index'</li>
+   <li>self.repeat.even - true if index is even</li>
+   <li>self.repeat.odd - true is index is odd</li>
+   <li>self.repeat.start - true if index == 1</li>
+   <li>self.repeat.end - true if index is pointing to last item of your list</li>
+   <li>self.repeat.inner - true if niether start nor end are true</li>
+  </ul>
+</li>
+
+<li>tal:content - replaces inner tag content with something else.
 
   <p tal:content="self.someStuff">I will be replaced</p>
 
-* tal:replace - replaces the whole tag and all its contents with something
+</li>
+<li>tal:replace - replaces the whole tag and all its contents with something
   else.
 
   <p tal:="self.someStuff">I will be replaced, including the p tag.</p>
-
-* tal:attributes - sets some attributes
+</li>
+<li>
+tal:attributes - sets some attributes
 
   <a href="#" alt="desc"
      tal:attributes="href self.url.href; alt self.url.desc"
      tal:content="self.url.label">SomeLabel</a>
-
-* tal:omit-tag - omits a tag (but not its contents) if the expression which is
+</li>
+<li>tal:omit-tag - omits a tag (but not its contents) if the expression which is
   evaled is true.
 
-  <em tal:omit-tag="false:self.important">I may be important.</em>
+    <em tal:omit-tag="false:self.important">I may be important.</em>
 
-  Note that tal:omit-tag="" ALWAYS strips the tag.
+Note that tal:omit-tag="" ALWAYS strips the tag.
+</li>
 
 
 EXPRESSIONS
 -----------
 
-true:EXPRESSION
+*true:EXPRESSION*
 
   If EXPRESSION returns an array reference
     If this array reference has at least one element
@@ -262,57 +276,60 @@ the true: or false: modifiers should always be used when using the
 tal:condition statement.
 
 
-false:EXPRESSION
+*false:EXPRESSION*
 
 I'm pretty sure you can work this one out by yourself :-)
 
 
-string:STRING
+*string:STRING*
 
 The string: modifier lets you interpolate petal expressions within a string and
 returns the value.
 
-  string:Welcome ${self.user.realName()}, it is ${myLocalTime()}!
+    string:Welcome ${self.user.realName()}, it is ${myLocalTime()}!
 
 
 Writing your own modifiers is easy:
 
-  tal = require('template-tal');
-  tal.MODIFIERS.uppercase = function (expr, self) {
-    var arg = resolve (expr, self);
-    if (typeof arg === 'string') { string = string.toUpperCase() }
-    return string;
-  };
-
+    tal = require('template-tal');
+    tal.MODIFIERS.uppercase = function (expr, self) {
+        var arg = resolve (expr, self);
+        if (typeof arg === 'string') { string = string.toUpperCase() }
+        return string;
+    };
 
 Then in your template:
 
-  <p tal:content="uppercase:string:foo">hello</p>
+    <p tal:content="uppercase:string:foo">hello</p>
 
 Will output
 
-  <p>FOO</p>
+    <p>FOO</p>
 
 
-EXPORTS 
+EXPORTS
+-------
 
 tal.process(), tal.MODIFIERS
 
 
 BUGS 
+----
 
 Since the library is a very fresh and alpha ports, there are surely quite a
 few.
 
-If you find any, please drop me an email. Patches are always welcome of course.
+If you find any, please drop me an email (jhiver (at) synapse (dash) telecom
+(dot) com.  Patches are always welcome of course.
 
 
 SEE ALSO 
+--------
 
 This library is a port of the Perl package Petal::Tiny, which I also wrote.
 
 
-Jean-Michel Hiver - jhiver (at) gmail (dot) com
+Jean-Michel Hiver - jhiver (at) synapse (dash) telecom (dot) com
 
 This module free software and is distributed under the same license as node.jis
 itself (MIT license)
