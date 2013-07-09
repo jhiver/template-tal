@@ -174,21 +174,19 @@ SUPPORTED TAL STATEMENTS:
 
 <ul>
 
-<li> tal:on-error
+<li> tal:on-error - to deal with errors</li></ul>
 
     <p tal:on-error="string:some thing bad happened">
        ... do some potentially fatal stuff here ...
     </p>
-</li>
 
-<li> tal:define
+<ul><li> tal:define - to avoid typing too much</li></ul>
 
     <p tal:define="newSymbol self.some.very.long.and.cumbersome.expression">
       <span petal:replace="self.newSymbol" />
     </p>
-</li>
 
-<li> tal:condition
+<ul><li> tal:condition - for conditional branching</li></ul>
 
     <p tal:condition="true:self.stuff">
       self.stuff is true, let's do something.
@@ -196,9 +194,8 @@ SUPPORTED TAL STATEMENTS:
     <p tal:condition="false:self.stuff">
       self.stuff is false, let's do something else.
     </p>
-</li>
   
-<li> tal:repeat</li></ul>
+<ul><li> tal:repeat - to iterate over arrays</li></ul>
 
     <table>
       <th>
@@ -223,33 +220,28 @@ access from within your repeat block.
    <li>self.repeat.end - true if index is pointing to last item of your list</li>
    <li>self.repeat.inner - true if niether start nor end are true</li>
   </ul>
-</li>
 
-<ul>
-<li>tal:content - replaces inner tag content with something else.
+<ul> <li>tal:content - replaces inner tag content with something else.</li></ul>
 
-  <p tal:content="self.someStuff">I will be replaced</p>
+    <p tal:content="self.someStuff">I will be replaced</p>
 
-</li>
-<li>tal:replace - replaces the whole tag and all its contents with something
-  else.
+<ul><li>tal:replace - replaces the whole tag and all its contents with something
+  else.</li></ul>
 
-  <p tal:="self.someStuff">I will be replaced, including the p tag.</p>
-</li>
-<li>
-tal:attributes - sets some attributes
+    <p tal:="self.someStuff">I will be replaced, including the p tag.</p>
 
-  <a href="#" alt="desc"
-     tal:attributes="href self.url.href; alt self.url.desc"
-     tal:content="self.url.label">SomeLabel</a>
-</li>
-<li>tal:omit-tag - omits a tag (but not its contents) if the expression which is
-  evaled is true.
+<ul><li> tal:attributesi - to set tag attributes</li></ul>
+
+    <a href="#" alt="desc"
+       tal:attributes="href self.url.href; alt self.url.desc"
+       tal:content="self.url.label">SomeLabel</a>
+
+<ul><li>tal:omit-tag - omits a tag (but not its contents) if the expression which is
+  evaled is true.</li></ul>
 
     <em tal:omit-tag="false:self.important">I may be important.</em>
 
 Note that tal:omit-tag="" ALWAYS strips the tag.
-</li>
 
 
 EXPRESSIONS
@@ -257,17 +249,16 @@ EXPRESSIONS
 
 *true:EXPRESSION*
 
-  If EXPRESSION returns an array reference
-    If this array reference has at least one element
-      Returns TRUE
+    If EXPRESSION returns an array reference
+      If this array reference has at least one element
+        Returns TRUE
+      Else
+        Returns FALSE
     Else
-      Returns FALSE
-
-  Else
-    If EXPRESSION returns a TRUE value (according to Perl 'trueness')
-      Returns TRUE
-    Else
-      Returns FALSE
+      If EXPRESSION returns a TRUE value (according to Javascript 'trueness')
+        Returns TRUE
+      Else
+        Returns FALSE
 
 the true: or false: modifiers should always be used when using the
 tal:condition statement.
