@@ -198,7 +198,7 @@ SUPPORTED TAL STATEMENTS:
     </p>
 </li>
   
-<li> tal:repeat
+<li> tal:repeat</li></ul>
 
     <table>
       <th>
@@ -225,6 +225,7 @@ access from within your repeat block.
   </ul>
 </li>
 
+<ul>
 <li>tal:content - replaces inner tag content with something else.
 
   <p tal:content="self.someStuff">I will be replaced</p>
