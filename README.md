@@ -10,10 +10,10 @@ SYNOPSIS
 
 In your Javascript code:
 
-  var tal  = require ('template-tal');
-  var xml  = getXMLString();
-  var data = { bar => 'BAZ' };
-  console.log (tal.process (xml, data));
+    var tal  = require ('template-tal');
+    var xml  = getXMLString();
+    var data = { bar => 'BAZ' };
+    console.log (tal.process (xml, data));
 
 'xml' might look like this:
 
@@ -125,35 +125,31 @@ Which is not very elegant. Thus we change the template as follows:
       </div>
     </body>
 
-Let's explain what we did here:
+Let's explain what we did:
 
-<ul>
-  <li>We used tal:content to replace the content of a tag with a javascript
-  expression. This implementation of the TAL spec evals Javascript directly, so
-  you can do things like:
+We used tal:content to replace the content of a tag with a javascript
+expression. This implementation of the TAL spec evals Javascript directly, so
+you can do things like:
 
-      <theAnswer tal:content="21*2" />
+    <theAnswer tal:content="21*2" />
 
-  Which would output
+Which would output
 
-      <theAnswer>42</theAnswer> 
+    <theAnswer>42</theAnswer> 
 
-  When you call 
+When you call 
 
-      tal.process (xmlData, someDataStructure)
+    tal.process (xmlData, someDataStructure)
 
-  Then 'someDataStructure' is available as self. Thus
-  someDataStructure.someObject.someMethod(23) becomes available as
-  self.someObject.someMethod(23) in your template.</li>
+'someDataStructure' becomes available as 'self'. Therefore,
+*someDataStructure.someObject.someMethod(23)* becomes available as
+*self.someObject.someMethod(23)* in your template.</li>
 
-  <li>We then used tal:condition in conjunction with the "true:" modifier to
+We then used tal:condition in conjunction with the "true:" modifier to
 either display a list if the list is populated, or display a message describing
-an empty basket.</li>
+an empty basket.
 
-
-  <li>Finally, we used tal:repeat to iterate through each item of the basket.</li>
-
-</ul>
+Finally, we used tal:repeat to iterate through each item of the basket.
 
 You can find a TAL reference at
 http://www.owlfish.com/software/simpleTAL/tal-guide.html, and this library
