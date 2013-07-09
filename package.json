@@ -1,0 +1,28 @@
+{
+  "name": "template-tal",
+  "description": "Low calorie implementation of the Template Attribute Language for JS"
+  "version": "0.1.1",
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./lib/template-tal",
+  "maintainers": [
+    {
+      "name": "Jean-Michel Hiver",
+      "url": "https://github.com/jhiver",
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhiver/template-tal",
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT",
+    }
+  ],
+  "readmeFilename": "README.md",
+  "_id": "template-tal@0.0.1",
+  "_from": "template-tal"
+}
