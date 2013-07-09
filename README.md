@@ -17,15 +17,15 @@ In your Javascript code:
 
 'xml' might look like this:
 
-  <html xmlns:tal="http://purl.org/petal/1.0/">
-    <body tal:content="bar">Dummy Content</body>
-  </html>
+    <html xmlns:tal="http://purl.org/petal/1.0/">
+        <body tal:content="bar">Dummy Content</body>
+    </html>
 
 and it produces something like this:
 
-  <html>
-    <body>BAZ</body>
-  </html>
+    <html>
+      <body>BAZ</body>
+    </html>
 
 
 SUMMARY
