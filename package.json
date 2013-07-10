@@ -1,28 +1,30 @@
 {
   "name": "template-tal",
-  "description": "Low calorie implementation of the Template Attribute Language for JS"
-  "version": "0.1.1",
-  "directories": {
-    "lib": "./lib"
-  },
-  "main": "./lib/template-tal",
+  "description": "XML Lightweight Template Attribute Language implementation for Javascript",
+  "version": "0.0.2",
+  "keywords": [
+    "tal",
+    "zpt",
+    "template",
+    "xml"
+  ],
   "maintainers": [
     {
       "name": "Jean-Michel Hiver",
-      "url": "https://github.com/jhiver",
+      "email": "jhiver@synapse-telecom.com",
+      "web": "http://www.synapse-telecom.com"
     }
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jhiver/template-tal",
-  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/jhiver/template-tal.git"
+    }
+  ],
   "licenses": [
     {
-      "type": "MIT",
-      "url": "http://opensource.org/licenses/MIT",
+      "name": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
     }
-  ],
-  "readmeFilename": "README.md",
-  "_id": "template-tal@0.0.1",
-  "_from": "template-tal"
+  ]
 }
