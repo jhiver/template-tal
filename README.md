@@ -176,14 +176,14 @@ SUPPORTED TAL STATEMENTS:
 
 <li> tal:on-error - to deal with errors</li></ul>
 
-    <p tal:on-error="string:some thing bad happened">
+    <p tal:on-error="string:something bad happened">
        ... do some potentially fatal stuff here ...
     </p>
 
 <ul><li> tal:define - to avoid typing too much</li></ul>
 
     <p tal:define="newSymbol self.some.very.long.and.cumbersome.expression">
-      <span petal:replace="self.newSymbol" />
+      <span tal:replace="self.newSymbol" />
     </p>
 
 <ul><li> tal:condition - for conditional branching</li></ul>
@@ -230,7 +230,7 @@ access from within your repeat block.
 
     <p tal:="self.someStuff">I will be replaced, including the p tag.</p>
 
-<ul><li> tal:attributesi - to set tag attributes</li></ul>
+<ul><li> tal:attributes - to set tag attributes</li></ul>
 
     <a href="#" alt="desc"
        tal:attributes="href self.url.href; alt self.url.desc"
@@ -271,7 +271,7 @@ I'm pretty sure you can work this one out by yourself :-)
 
 *string:STRING*
 
-The string: modifier lets you interpolate petal expressions within a string and
+The string: modifier lets you interpolate tal expressions within a string and
 returns the value.
 
     string:Welcome ${self.user.realName()}, it is ${myLocalTime()}!

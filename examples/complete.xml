@@ -1,0 +1,10 @@
+<body>
+  <p tal:on-error="string:I will die" tal:content="self.does.not.exist">The error will be displayed here</p>
+  <p tal:content="self.exists">This will be replaced by the 'exist' attribute</p>
+  <p tal:replace="self.exists">This whole tag will be replaced by the 'exists' attribute</p>
+  <ul tal:condition="true:self.urls">
+    <li tal:repeat="item self.urls">
+      <b tal:omit-tag="false:self.item.important"><a tal:attributes="href self.item.url" tal:content="self.item.desc" /></b>
+    </li>
+  </ul>
+</body>
