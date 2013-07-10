@@ -12,13 +12,13 @@ In your Javascript code:
 
     var tal  = require ('template-tal');
     var xml  = getXMLString();
-    var data = { bar => 'BAZ' };
+    var data = { bar: 'BAZ' };
     console.log (tal.process (xml, data));
 
 'xml' might look like this:
 
-    <html xmlns:tal="http://purl.org/petal/1.0/">
-        <body tal:content="bar">Dummy Content</body>
+    <html>
+        <body tal:content="self.bar">Dummy Content</body>
     </html>
 
 and it produces something like this:
