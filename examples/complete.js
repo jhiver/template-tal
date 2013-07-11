@@ -1,6 +1,6 @@
 var fs  = require ('fs');
 var tal = require ('../lib/template-tal.js');
-var xml = fs.readFileSync('./complete.xml', 'utf8');
+var xml = fs.readFileSync(__dirname + '/complete.xml', 'utf8');
 var data = {
    exists: "yes i do exist",
    urls: [ { url: "http://google.com", desc: "good search engine" },
