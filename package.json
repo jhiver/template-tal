@@ -1,7 +1,7 @@
 {
   "name": "template-tal",
   "description": "XML Lightweight Template Attribute Language implementation for Javascript",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [
     "tal",
     "zpt",
@@ -33,4 +33,5 @@
   "scripts": {
     "test": "nodeunit tests/*.js"
   }
+  "main": "lib/template-tal.js"
 }
