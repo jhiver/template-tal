@@ -32,6 +32,6 @@
   },
   "scripts": {
     "test": "nodeunit tests/*.js"
-  }
+  },
   "main": "lib/template-tal.js"
 }
