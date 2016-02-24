@@ -228,7 +228,7 @@ access from within your repeat block.
 <ul><li>tal:replace - replaces the whole tag and all its contents with something
   else.</li></ul>
 
-    <p tal:="self.someStuff">I will be replaced, including the p tag.</p>
+    <p tal:replace="self.someStuff">I will be replaced, including the p tag.</p>
 
 <ul><li> tal:attributes - to set tag attributes</li></ul>
 
