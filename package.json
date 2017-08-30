@@ -28,7 +28,7 @@
     }
   ],
   "devDependencies": {
-    "nodeunit": "0.8.1"
+    "nodeunit": "^0.11.1"
   },
   "scripts": {
     "test": "nodeunit tests/*.js"

@@ -6,9 +6,9 @@ exports.testSynopsis = function(test){
     // synopsis
     xml  = getSynopsisXMLString();
     data = { bar: 'BAZ' };
-    res  = tal.process(xml,data); 
+    res  = tal.process(xml,data);
     test.ok(res.match(/\<body\>BAZ\<\/body\>/, "synopsis sample looks good"));
-    
+
     // kickstart - with non enpty list
     xml = getKickStartXMLString();
     data = {
@@ -21,7 +21,7 @@ exports.testSynopsis = function(test){
     test.ok(res.match(/\<li\>banana<\/li\>/), "bob sure likes bananas...");
     test.ok(res.match(/\<li\>kiwi<\/li\>/), "bob sure likes kiwis...");
     test.ok(res.match(/\<li\>mango<\/li\>/), "bob sure likes mangoes...");
-    
+
     // kickstart - with empty list
     data = { user: "Bob", basket: [] };
     res  = tal.process(xml,data);
