@@ -48,26 +48,3 @@ describe('asyncFunction', function() {
     })
   })
 })
-
-
-
-/*
-describe('redis', function() {
-    return describe('flushall', function() {
-      return it('should clear everything', function(done) {
-        return Message.redis().flushall(function() {
-          return Message.redis().keys('*', function(err, res) {
-            if (err) {
-              return done(err);
-            }
-            if (res.length === 0) {
-              return done();
-            }
-            return done('redis keys not empty');
-          });
-        });
-      });
-    });
-});
-
-*/
