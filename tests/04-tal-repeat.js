@@ -4,7 +4,7 @@ talRepeat = `
 <html>
 <body>
   <ul>
-    <li tal:repeat="fruit self.fruits" tal:content="self.fruit">FAIL</li>
+    <li tal:repeat="fruit fruits" tal:content="fruit">FAIL</li>
   </ul>
 </body>
 </html>
@@ -14,7 +14,7 @@ talRepeat2 = `
 <html>
 <body>
   <ul>
-    <li tal:repeat="fruit self.fruits()" tal:content="self.fruit">FAIL</li>
+    <li tal:repeat="fruit fruits()" tal:content="fruit">FAIL</li>
   </ul>
 </body>
 </html>

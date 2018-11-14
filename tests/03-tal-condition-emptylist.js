@@ -2,15 +2,15 @@ tal = require('../lib/template-tal')
 
 talConditionEmptylist = `
 <html>
-    <body tal:condition="true:self.Emptylist">FAIL</body>
-    <body tal:condition="false:self.Emptylist">PASS</body>
+    <body tal:condition="true:Emptylist">FAIL</body>
+    <body tal:condition="false:Emptylist">PASS</body>
 </html>
 `
 
 talConditionEmptylist2 = `
 <html>
-    <body tal:condition="true:self.Emptylist()">FAIL</body>
-    <body tal:condition="false:self.Emptylist()">PASS</body>
+    <body tal:condition="true:Emptylist()">FAIL</body>
+    <body tal:condition="false:Emptylist()">PASS</body>
 </html>
 `
 

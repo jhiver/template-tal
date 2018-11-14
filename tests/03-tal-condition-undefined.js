@@ -2,15 +2,15 @@ tal = require('../lib/template-tal')
 
 talConditionUndefined = `
 <html>
-    <body tal:condition="true:self.undefined">FAIL</body>
-    <body tal:condition="false:self.undefined">PASS</body>
+    <body tal:condition="true:undefined">FAIL</body>
+    <body tal:condition="false:undefined">PASS</body>
 </html>
 `
 
 talConditionUndefined2 = `
 <html>
-    <body tal:condition="true:self.undefined()">FAIL</body>
-    <body tal:condition="false:self.undefined()">PASS</body>
+    <body tal:condition="true:undefined()">FAIL</body>
+    <body tal:condition="false:undefined()">PASS</body>
 </html>
 `
 

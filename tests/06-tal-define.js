@@ -1,20 +1,20 @@
 tal = require('../lib/template-tal')
 
-talContent = `
+talDefine = `
 <html>
-    <body tal:content="bar">Dummy Content</body>
+    <body tal:define="foo bar" tal:content="foo">Dummy Content</body>
 </html>
 `
 
-talContent2 = `
+talDefine2 = `
 <html>
-    <body tal:content="bar()">Dummy Content</body>
+    <body tal:define="foo bar()" tal:content="foo">Dummy Content</body>
 </html>
 `
 
-describe('data', function() {
+describe('defineData', function() {
   return it('should contain BAZ', function(done) {
-    tal.process(talContent, {bar: 'BAZ'}, function (error, result){
+    tal.process(talDefine, {bar: 'BAZ'}, function (error, result){
       if (error) return done(error)
       if (String(result).match('<body>BAZ</body>')) return done()
       return done('unexpected ', + result)
@@ -23,9 +23,9 @@ describe('data', function() {
 })
 
 
-describe('function', function() {
+describe('defineFunction', function() {
   return it('should contain BAZ', function(done) {
-    tal.process(talContent2, {bar: function() { return 'BAZ' }}, function (error, result){
+    tal.process(talDefine2, {bar: function() { return 'BAZ' }}, function (error, result){
       if (error) return done(error)
       if (String(result).match('<body>BAZ</body>')) return done()
       return done('unexpected ', + result)
@@ -34,14 +34,14 @@ describe('function', function() {
 })
 
 
-describe('asyncFunction', function() {
+describe('defineAsyncFunction', function() {
   return it('should contain BAZ', function(done) {
     var bazFunc = function() {
       return new Promise(function(resolve){
         setTimeout(function() { resolve("BAZ") }, 10)
       })
     }
-    tal.process(talContent2, {bar: bazFunc}, function (error, result){
+    tal.process(talDefine2, {bar: bazFunc}, function (error, result){
       if (error) return done(error)
       if (String(result).match('<body>BAZ</body>')) return done()
       return done('unexpected ', + result)

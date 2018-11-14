@@ -2,13 +2,13 @@ tal = require('../lib/template-tal')
 
 talReplace = `
 <html>
-    <body tal:replace="self.bar">Dummy Content</body>
+    <body tal:replace="bar">Dummy Content</body>
 </html>
 `
 
 talReplace2 = `
 <html>
-    <body tal:replace="self.bar()">Dummy Content</body>
+    <body tal:replace="bar()">Dummy Content</body>
 </html>
 `
 
