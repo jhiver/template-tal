@@ -164,9 +164,7 @@ the desired value.
 
 2. We used tal:content to replace the content of a tag with a javascript
 expression. This implementation of the TAL spec evals Javascript directly, so
-you can do things like:
-
-    <theAnswer tal:content="21*2" />
+you can do things like `<theAnswer tal:content="21*2" />`
 
 Which would output
 
