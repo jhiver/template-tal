@@ -1,7 +1,7 @@
 {
   "name": "template-tal",
   "description": "XML Lightweight Template Attribute Language implementation for Javascript",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "keywords": [
     "tal",
     "zpt",
@@ -11,8 +11,7 @@
   "maintainers": [
     {
       "name": "Jean-Michel Hiver",
-      "email": "jhiver@synapse-telecom.com",
-      "web": "http://www.synapse-telecom.com"
+      "email": "jhiver@gmail.com"
     }
   ],
   "repositories": [

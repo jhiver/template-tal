@@ -10,9 +10,12 @@ describe('dummy', function() {
 
 describe('simple', function() {
   return it('should process very simple data', function(done) {
-    tal.process(dummy, {}, function (error, result){
-      if(error) return done(error)
-      done()
-    })
+    tal
+      .process(dummy, {})
+      .then(function(result){
+        done()
+      }, function (error){
+        done(error)        
+      })
   })
 })
