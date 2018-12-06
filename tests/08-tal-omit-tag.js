@@ -18,6 +18,25 @@ talOmitTag2 = `
 </html>
 `
 
+talOmitTag3 = `
+<html>
+  <body>
+    <span tal:omit-tag="">omit</span>
+  </body>
+</html>
+`
+
+describe('omitTagData3', function() {
+  return it('should work', function(done) {
+    tal.process(talOmitTag3, {}, function (error, result){
+      if (error) return done(error)
+      if (String(result).match('span')) return done("omit isn't working")
+      return done()
+    })
+  })
+})
+
+
 describe('omitTagData', function() {
   return it('should work', function(done) {
     tal.process(talOmitTag, {trueExpr: "something"}, function (error, result){
